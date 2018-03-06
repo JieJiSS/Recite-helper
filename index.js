@@ -70,7 +70,7 @@ function createWindow () {
     });
     
     if(!DEBUG) {
-        win.setMenu(null); //TODO DIY a menu
+    //    win.setMenu(null); //TODO DIY a menu
     } else {
         win.webContents.openDevTools();
     }

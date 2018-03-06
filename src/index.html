@@ -11,34 +11,69 @@
     <style>
 body {
     background: white;
-    transition: 1.5s opacity linear;
-    -webkit-transition: 1.5s opacity linear;
+    transition: 1s opacity linear;
+    -webkit-transition: 1s opacity linear;
     font-family: FZYXJian, "Microsoft YaHei";
 }
-head {
+.head .h1 {
     text-align: center;
+    font-weight: normal;
+    font-size: 80px;
+    padding: 60px 0;
+}
+
+.button {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 15px 0;
+}
+
+.button div {
+    background: rgb(230, 230, 230);
+    text-align: center;
+    position: relative;
+    left: calc((100% - 300px) / 2);
+    width: 300px;
+    padding: 20px 0;
+    border-radius: 15px;
+}
+
+.types {
+    font-size: 40px;
 }
     </style>
 </head>
 <body>
     <div class="head">
-        <h1>Recite Helper</h1>
+        <div class="h1">Recite Helper</div>
     </div>
     <div class="main">
         <div>
-            <input type="radio" class="radiobox" @click="jump('select.html')" name="types" checked>Multi select
+            <div class="button types" @click="jump('select.html')">
+                <div>Multi select</div>
+            </div>
         </div>
         <div>
-            <input type="radio" class="radiobox" @click="jump('blanks.html')" name="types">Fill blanks
+            <div class="button types" @click="jump('blanks.html')">
+                <div>Fill blanks</div>
+            </div>
         </div>
         <script>
-        var app = new Vue({
-            el: '.radiobox',
-            data: {},
+        new Vue({
+            el: '.types',
+            data: {
+                clickable: true
+            },
             methods: {
                 jump (href) {
-                    $("body").css("opacity", 0);
-                    setTimeout(() => { location.href = href; }, 1500);
+                    if (this.clickable) {
+                        this.clickable = false;
+                        $("body").css("opacity", 0);
+                        setTimeout(() => { location.href = href; }, 1000);
+                    } else {
+                        return false;
+                    }
                 }
             }
         });
