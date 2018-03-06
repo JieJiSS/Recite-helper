@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recite Helper</title>
+    <link rel="stylesheet" href="css/font.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/vue.js"></script>
+    <style>
+body {
+    background: white;
+    transition: 1.5s opacity linear;
+    -webkit-transition: 1.5s opacity linear;
+    font-family: FZYXJian, "Microsoft YaHei";
+}
+head {
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>Recite Helper</h1>
+    </div>
+    <div class="main">
+        <div>
+            <input type="radio" class="radiobox" @click="jump('select.html')" name="types" checked>Multi select
+        </div>
+        <div>
+            <input type="radio" class="radiobox" @click="jump('blanks.html')" name="types">Fill blanks
+        </div>
+        <script>
+        var app = new Vue({
+            el: '.radiobox',
+            data: {},
+            methods: {
+                jump (href) {
+                    $("body").css("opacity", 0);
+                    setTimeout(() => { location.href = href; }, 1500);
+                }
+            }
+        });
+        </script>
+    </div>
+</body>
+</html>
